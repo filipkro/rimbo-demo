@@ -35,11 +35,13 @@ if RESTART:
     g.add((dummy_agent, RDF.type, PROV.SoftwareAgent))
     g.add((dummy_agent, RIMBO.name, rdflib.Literal('dummy-agent')))
     model = read_sbml_model('data/y842r1.xml')
+    oldfile = 'data/y842.xml'
 else:
     g.parse('sim-output/revs-itr-500.ttl')
     prev_model = RIMBO['rev-964aeda3-8912-3477-8658-289b3b8ded28']
     patch_file = RIMBO['file-y8v842']
     model = read_sbml_model('data/y842r500.xml')
+    oldfile = 'data/y842r500.xml'
 
 ACTIONS = ['r', 'g', 'f']
 PROBS = [0, 0.4, 0.6]
@@ -119,8 +121,8 @@ for i in range(START_REV, NBR_REVISIONS):
     # print(action)
     # print(val)
     write_sbml_model(model, 'tmp/rev.xml')
-    prev_model, patch_file = add_revision(g, str(i), action, prev_model, patch_file,
-                              'tmp/rev.xml', 'data/y842.xml', dummy_agent,
+    prev_model, patch_file, oldfile = add_revision(g, str(i), action, prev_model, patch_file,
+                              'tmp/rev.xml', oldfile, dummy_agent,
                               rid=rid, sbo=sbo, kegg=kegg, gene=gene,
                               bound=bound, value=val)
     

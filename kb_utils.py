@@ -58,6 +58,7 @@ def add_revision(g, i, action, rev_to, patch_to, newfile, oldfile, agent,
         rev_flux(g, ch, rid, bound, value)
 
     if int(i) % 100 == 0 or int(i) % 501 == 0:
+
         patch_to = RIMBO[f'file-y8v842r{i}']
         g.add((patch_to, RDF.type, EDAM['2585']))
         with open(newfile, 'rb') as fi:
@@ -68,6 +69,7 @@ def add_revision(g, i, action, rev_to, patch_to, newfile, oldfile, agent,
         g.add((model, RIMBO.isImplementedAs, patch_to))
 
         shutil.copyfile(newfile, f'data/y842r{i}.xml')
+        oldfile = f'data/y842r{i}.xml'
     else:
         patch = RIMBO[f"patch-{str(uuid.uuid3(uuid.NAMESPACE_URL, 'y8v842r' + i))}"]
         g.add((patch, RDF.type, RIMBO.DiffPatch))
@@ -81,12 +83,14 @@ def add_revision(g, i, action, rev_to, patch_to, newfile, oldfile, agent,
 
         # print('getting diff...')
         diff = main.diff_files(oldfile, newfile, diff_options={'fast_match':True})
+        print()
+        print(action, len(diff))
         # print('diff found')
         zz = base64.b64encode(zlib.compress(pickle.dumps(diff)))
         g.add((patch, RIMBO.binaryRepresentation,
             rdflib.Literal(zz, datatype=XSD.base64Binary)))
     
-    return model, patch_to
+    return model, patch_to, oldfile
 
 def rev_reaction(g, change, rid, sbo, kegg, action='Deletion'):
     ch = rdflib.BNode()
