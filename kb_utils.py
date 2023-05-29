@@ -57,7 +57,7 @@ def add_revision(g, i, action, rev_to, patch_to, newfile, oldfile, agent,
     elif action == 'f':
         rev_flux(g, ch, rid, bound, value)
 
-    if int(i) % 100 == 0:
+    if int(i) % 100 == 0 or int(i) % 501 == 0:
         patch_to = RIMBO[f'file-y8v842r{i}']
         g.add((patch_to, RDF.type, EDAM['2585']))
         with open(newfile, 'rb') as fi:
