@@ -1,0 +1,8 @@
+added 500 revisions to graph (itr 500)
+size of graph: 11433
+number of removed reactions: 0
+number of modified gene-reaction-rules: 206
+number of modified flux bounds: 293
+
+previous model:
+http://www.semanticweb.org/filipkro/ontologies/2023/4/rimbo#rev-964aeda3-8912-3477-8658-289b3b8ded28
