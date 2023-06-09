@@ -93,7 +93,7 @@ class MpGen:
                         if val >= r.lower_bound else 1000.0
                     bound = 'UpperFluxBound'
             
-            fname = f'tmp-par/rev-{branch}.xml'
+            fname = f'tmp/rev-{branch}.xml'
             write_sbml_model(model, fname)
 
             trp, prev_model, patch_file, oldfile = \
@@ -108,21 +108,18 @@ class MpGen:
         # run outer loop with four parallel revision chains,
         # serialize graph every iteration
         if self.args.previous_model != '':
-            fa = f'data-par/{self.args.previous_model}a.xml'
-            fb = f'data-par/{self.args.previous_model}b.xml'
-            fc = f'data-par/{self.args.previous_model}c.xml'
-            fd = f'data-par/{self.args.previous_model}d.xml'
+            model_path = self.args.previous_model[:-5]
+            fa = f'{model_path}a.xml'
+            fb = f'{model_path}b.xml'
+            fc = f'{model_path}c.xml'
+            fd = f'{model_path}d.xml'
 
-            m_id = f'y8v{self.args.previous_model[1:]}'
+            m_id = f"y8v{model_path.split('/')[-1][1:]}"
 
-            mod_a = RIMBO[f"rev-branch-a-{str(uuid.uuid3(uuid.NAMESPACE_URL,
-                                                         f'{m_id}a'))}"]
-            mod_b = RIMBO[f"rev-branch-b-{str(uuid.uuid3(uuid.NAMESPACE_URL,
-                                                         f'{m_id}b'))}"]
-            mod_c = RIMBO[f"rev-branch-c-{str(uuid.uuid3(uuid.NAMESPACE_URL,
-                                                         f'{m_id}c'))}"]
-            mod_d = RIMBO[f"rev-branch-d-{str(uuid.uuid3(uuid.NAMESPACE_URL,
-                                                         f'{m_id}d'))}"]
+            mod_a = RIMBO[f"rev-branch-a-{str(uuid.uuid3(uuid.NAMESPACE_URL, f'{m_id}a'))}"]
+            mod_b = RIMBO[f"rev-branch-b-{str(uuid.uuid3(uuid.NAMESPACE_URL, f'{m_id}b'))}"]
+            mod_c = RIMBO[f"rev-branch-c-{str(uuid.uuid3(uuid.NAMESPACE_URL, f'{m_id}c'))}"]
+            mod_d = RIMBO[f"rev-branch-d-{str(uuid.uuid3(uuid.NAMESPACE_URL, f'{m_id}d'))}"]
 
             patch_a = RIMBO[f'file-{m_id}a']
             patch_b = RIMBO[f'file-{m_id}b']
@@ -190,7 +187,7 @@ if __name__ == '__main__':
     parser.add_argument('--init_graph', default=0, type=int)
     parser.add_argument('--init_examples', default=0, type=int)
     parser.add_argument('--previous_model', default='')
-    parser.add_argument('--prev_graph', default=-'')
+    parser.add_argument('--prev_graph', default='')
     parser.add_argument('--nbr_cyc', default=20, type=int)
     args = parser.parse_args()
     
