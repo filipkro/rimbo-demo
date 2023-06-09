@@ -140,8 +140,8 @@ class MpGen:
             patch_b = patch_c = patch_d = patch_a
             fb = fc = fd = fa
 
-        if self.args.graph_itr != -1:
-            g.parse(f'data-par/revs-par-itr-{self.args.graph_itr}.ttl')
+        if self.args.prev_graph != '':
+            g.parse(self.args.prev_graph)
 
         self.start_i = int(patch_a.toPython().split('file-')[-1].split('r')[-1][:-1])
         for i in range(self.NBR_CYC):
@@ -190,11 +190,11 @@ if __name__ == '__main__':
     parser.add_argument('--init_graph', default=0, type=int)
     parser.add_argument('--init_examples', default=0, type=int)
     parser.add_argument('--previous_model', default='')
-    parser.add_argument('--graph_itr', default=-1, type=int)
+    parser.add_argument('--prev_graph', default=-'')
     parser.add_argument('--nbr_cyc', default=20, type=int)
     args = parser.parse_args()
     
-    assert any([args.init_graph, args.graph_itr != -1])
+    assert any([args.init_graph, args.prev_graph != ''])
     assert any([args.init_examples, args.previous_model != ''])
 
     mpg = MpGen(args)
