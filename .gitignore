@@ -12,6 +12,8 @@ sloppy
 tmp/*
 tmp*
 !tmp/.gitkeep 
+done.ttl
+bkp
 
 # Distribution / packaging
 .Python
