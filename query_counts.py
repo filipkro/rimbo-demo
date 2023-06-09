@@ -7,7 +7,7 @@ from urllib.parse import quote_plus
 base_url = "http://localhost:3030/rev?query="
 PREFIXES = """
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rimbo: <https://project-genesis.io/rimbo#>
+PREFIX rimbo: <http://rimbo.project-genesis.io#>
 PREFIX comodi: <http://purl.uni-rostock.de/comodi/comodi#>
 PREFIX BFO: <http://purl.obolibrary.org/obo/BFO_>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
