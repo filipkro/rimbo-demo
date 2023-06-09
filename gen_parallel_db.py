@@ -27,7 +27,7 @@ class MpGen:
         trip = []
         model = read_sbml_model(oldfile)
 
-        for i in range(0, 100):
+        for i in range(0, 1):
             if branch == 'a':
                 action = random.choices(self.ACTIONS, self.PROBS)[0]
             elif branch in ['b', 'c']:
