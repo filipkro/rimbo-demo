@@ -6,10 +6,8 @@ The code generating the example knowledge graph can be found in `gen_parallel_db
 `query_counts.py` queries for number of revisions and number of different revisions.
 `get_model.py` contains an example of how the SBML model can be recreated from a query.
 
-Knowledge graphs of different size and some of the generated models are available https://chalmers-my.sharepoint.com/:f:/g/personal/filipkro_chalmers_se/EnaN4zOCQytNhOuXeZlP1OUBCNDk58lFUFewJobNqDLSiA?e=oyxXvo.
+Knowledge graphs of different size and some of the generated models are available [here](https://chalmers-my.sharepoint.com/:f:/g/personal/filipkro_chalmers_se/EnaN4zOCQytNhOuXeZlP1OUBCNDk58lFUFewJobNqDLSiA?e=oyxXvo).
 
-[here](﻿﻿﻿﻿https://chalmers-my.sharepoint.com/:f:/g/personal/filipkro_chalmers_se/EnaN4zOCQytNhOuXeZlP1OUBCNDk58lFUFewJobNqDLSiA?e=oyxXvo).
-﻿﻿﻿﻿https://chalmers-my.sharepoint.com/:f:/g/personal/filipkro_chalmers_se/EnaN4zOCQytNhOuXeZlP1OUBCNDk58lFUFewJobNqDLSiA?e=oyxXvo
 The code runs with Python 3.10.11, and the requirements can be installed by running 
 ```
 pip install -r requirements.txt
